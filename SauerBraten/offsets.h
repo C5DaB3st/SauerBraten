@@ -1,5 +1,26 @@
 #pragma once
 #include "math.h"
+#include <windows.h>
+#include <iostream>
+
+inline std::uint64_t base = reinterpret_cast<std::uint64_t>(GetModuleHandleA("sauerbraten.exe"));
+
+struct offsets
+{
+	std::uint64_t* localPlayer;
+	std::uint64_t* entList;
+	int* numMonsters;
+	int* numKilled;
+
+	offsets(std::uint64_t baseAddr)
+	{
+		localPlayer = reinterpret_cast<std::uint64_t*>(baseAddr + 0x2A5730);
+		entList = reinterpret_cast<std::uint64_t*>(baseAddr + 0x346D70);
+		numMonsters = reinterpret_cast<int*>(baseAddr + 0x2A5788);
+		numKilled = reinterpret_cast<int*>(baseAddr + 0x2A578C);
+	}
+};
+
 
 struct wpAmmo
 {
