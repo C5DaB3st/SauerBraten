@@ -1,3 +1,12 @@
 #pragma once
 #include "offsets.h"
-#include <windows.h>
+
+void createConsole();
+
+void setConsoleColor(int red, int green, int blue);
+
+bool Init();
+
+void loopThroughEntList();
+
+void tpToPlayer();
